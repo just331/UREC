@@ -1,252 +1,139 @@
-/**
-* Template Name: Selecao - v4.3.0
-* Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-(function() {
-  "use strict";
+jQuery(document).ready(function($){
+	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
+	var MqL = 1000;
+	//move nav element position according to window width
+	moveNavigation();
+	$(window).on('resize', function(){
+		(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
+	});
 
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
+	//mobile - open lateral menu clicking on the menu icon
+	$('.ttu-nav-trigger').on('click', function(event){
+		event.preventDefault();
+		if( $('.ttu-main-content').hasClass('nav-is-visible') ) {
+			closeNav();
+			$('.ttu-overlay').removeClass('is-visible');
 
-  /**
-   * Easy event listener function
-   */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+		} else {
+			$(this).addClass('nav-is-visible');
+		
+			$('.ttu-primary-nav').addClass('nav-is-visible');
+			$('.ttu-main-header').addClass('nav-is-visible');
+			$('.ttu-main-content').addClass('nav-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+				$('body').addClass('overflow-hidden');
+			});
+			toggleSearch('close');
+			$('.ttu-overlay').addClass('is-visible');
+		}
+	});
 
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+	//open search form
+	$('.ttu-search-trigger').on('click', function(event){
+		event.preventDefault();
+		toggleSearch();
+		closeNav();
+	});
 
-  /**
-   * Navbar links active state on scroll
-   */
-  let navbarlinks = select('#navbar .scrollto', true)
-  const navbarlinksActive = () => {
-    let position = window.scrollY + 200
-    navbarlinks.forEach(navbarlink => {
-      if (!navbarlink.hash) return
-      let section = select(navbarlink.hash)
-      if (!section) return
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        navbarlink.classList.add('active')
-      } else {
-        navbarlink.classList.remove('active')
-      }
-    })
-  }
-  window.addEventListener('load', navbarlinksActive)
-  onscroll(document, navbarlinksActive)
+	//close lateral menu on mobile 
+	$('.ttu-overlay').on('swiperight', function(){
+		if($('.ttu-primary-nav').hasClass('nav-is-visible')) {
+			closeNav();
+			$('.ttu-overlay').removeClass('is-visible');
+		}
+	});
+	$('.nav-on-left .ttu-overlay').on('swipeleft', function(){
+		if($('.ttu-primary-nav').hasClass('nav-is-visible')) {
+			closeNav();
+			$('.ttu-overlay').removeClass('is-visible');
+		}
+	});
+	$('.ttu-overlay').on('click', function(){
+		closeNav();
+		toggleSearch('close')
+		$('.ttu-overlay').removeClass('is-visible');
+	});
 
-  /**
-   * Scrolls to an element with header offset
-   */
-  const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
 
-    let elementPos = select(el).offsetTop
-    window.scrollTo({
-      top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
 
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
-  }
 
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
+	//prevent default clicking on direct children of .ttu-primary-nav 
+	$('.ttu-primary-nav').children('.has-children').children('a').on('click', function(event){
+		event.preventDefault();
+	});
+	//open submenu
+	$('.has-children').children('a').on('click', function(event){
+		if( !checkWindowWidth() ) event.preventDefault();
+		var selected = $(this);
+		if( selected.next('ul').hasClass('is-hidden') ) {
+			//desktop version only
+			selected.addClass('selected').next('ul').removeClass('is-hidden').end().parent('.has-children').parent('ul').addClass('moves-out');
+			selected.parent('.has-children').siblings('.has-children').children('ul').addClass('is-hidden').end().children('a').removeClass('selected');
+			$('.ttu-overlay').addClass('is-visible');
+		} else {
+			selected.removeClass('selected').next('ul').addClass('is-hidden').end().parent('.has-children').parent('ul').removeClass('moves-out');
+			$('.ttu-overlay').removeClass('is-visible');
+		}
+		toggleSearch('close');
+	});
 
-  /**
-   * Mobile nav toggle
-   */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+	//submenu items - go back link
+	$('.go-back').on('click', function(){
+		$(this).parent('ul').addClass('is-hidden').parent('.has-children').parent('ul').removeClass('moves-out');
+	});
 
-  /**
-   * Mobile nav dropdowns activate
-   */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
+	function closeNav() {
 
-  /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
+		$('.ttu-nav-trigger').removeClass('nav-is-visible');
+		$('.ttu-main-header').removeClass('nav-is-visible');
+		$('.ttu-primary-nav').removeClass('nav-is-visible');
+		$('.has-children ul').addClass('is-hidden');
+		$('.has-children a').removeClass('selected');
+		$('.moves-out').removeClass('moves-out');
+		$('.ttu-main-content').removeClass('nav-is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+			$('body').removeClass('overflow-hidden');
+		});
+	}
 
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
+	function toggleSearch(type) {
+		if(type=="close") {
+			//close serach 
+			$('.ttu-search').removeClass('is-visible');
+			$('.ttu-search-trigger').removeClass('search-is-visible');
+			$('.ttu-overlay').removeClass('search-is-visible');
+		} else {
+			//toggle search visibility
+			$('.ttu-search').toggleClass('is-visible');
+			$('.ttu-search-trigger').toggleClass('search-is-visible');
+			$('.ttu-overlay').toggleClass('search-is-visible');
+			if($(window).width() > MqL && $('.ttu-search').hasClass('is-visible')) $('.ttu-search').find('input[type="search"]').focus();
+			($('.ttu-search').hasClass('is-visible')) ? $('.ttu-overlay').addClass('is-visible') : $('.ttu-overlay').removeClass('is-visible') ;
+		}
+	}
 
-  /**
-   * Scroll with ofset on page load with hash links in the url
-   */
-  window.addEventListener('load', () => {
-    if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
-      }
-    }
-  });
+	function checkWindowWidth() {
+		//check window width (scrollbar included)
+		var e = window, 
+            a = 'inner';
+        if (!('innerWidth' in window )) {
+            a = 'client';
+            e = document.documentElement || document.body;
+        }
+        if ( e[ a+'Width' ] >= MqL ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-  /**
-   * Porfolio isotope and filter
-   */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
-      });
-
-      let portfolioFilters = select('#portfolio-flters li', true);
-
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
-
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
-    }
-
-  });
-
-  /**
-   * Initiate portfolio lightbox 
-   */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
-  });
-
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-
-  /**
-   * Animation on scroll
-   */
-  window.addEventListener('load', () => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    })
-  });
-
-})()
+	function moveNavigation(){
+		var navigation = $('.ttu-nav');
+  		var desktop = checkWindowWidth();
+        if ( desktop ) {
+			navigation.detach();
+			navigation.insertBefore('.ttu-header-buttons');
+		} else {
+			navigation.detach();
+			navigation.insertAfter('.ttu-main-content');
+		}
+	}
+});

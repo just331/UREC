@@ -12,8 +12,8 @@
         <link rel="stylesheet" href="/assets/css/style.min.css" media="all"/>
         <link rel="shortcut icon" href="/_ttu-template/2017/img/favicon.ico" type="image/x-icon"/>
         <link rel="icon" href="/_ttu-template/2017/img/favicon.ico" type="image/x-icon"/>
-        <script src="/_ttu-template/2017/js/jquery-2.1.1.js"></script>
-        <script src="/_ttu-template/2017/js/jquery.mobile.custom.min.js"></script>
+        <script src="/assets/js/jquery-2.1.1.js"></script>
+        <script src="/assets/js/jquery.mobile.custom.min.js"></script>
         <script type="text/javascript">
             var MTIProjectId = '76d1bfe1-39f8-4fc4-9202-23ddf5addb92';
             (function() {
@@ -25,8 +25,8 @@
             }
             )();
         </script>
-        <script src="/_ttu-template/2017/js/modernizr.js"></script>
-        <script src="/_ttu-template/2017/js/scroll.js"></script>
+<script src="/assets/js/modernizr.js"></script>
+<script src="/assets/js/scroll.js"></script>
         <script>
             function googleTranslateElementInit() {
                 new google.translate.TranslateElement({
@@ -200,6 +200,7 @@
         </header>
         <main class="ttu-main-content">
             <!-- Main content = = = = = = = = = = = = = = = = = = = = = = = -->
+
             <section class="l-main-pagecontent">
                 <section class="standard-content">
                     <div class="row">
@@ -207,7 +208,7 @@
                             <h1></h1>
                             <!-- ==================== ADD MAIN CONTENT BELOW THIS LINE ==================== -->
                             <section class="ttu">
-                                <!--<nav class="ttu__navbar" id="ttu-navbar">
+                                <nav class="ttu__navbar" id="ttu-navbar">
                                     <div class="ttu-navbar__menu">
                                         <div class="ttu-navbar-menu__links">
                                             <ul>
@@ -235,7 +236,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </nav>-->
+                                </nav>
                                 <!--Double T logo-->
                                 <a href="#header" tabindex="-1">
                                     <div class="logo" title="Double T">
@@ -255,12 +256,12 @@
 
                                 <!--=================================MAIN WEBPAGE START====================================-->
                                 <section class="ttu__header" id="header">
-                                    <div class="ttu-header__vid" style="background-image: url('/_resources/homepage-v2/content/images/vid-still.jpg');">
-                                        <video id="ttu-header-vid__vid" autoplay="autoplay" muted="muted" loop="loop" poster="/_resources/homepage-v2/content/images/vid-still.jpg">
+                                    <div class="ttu-header__vid" style="background-image: url('/assets/img/REC15406.jpg');">
+                                        <video id="ttu-header-vid__vid" autoplay="autoplay" muted="muted" loop="loop" poster="/assets/img/REC15406.jpg">
                                             <source src="/_resources/homepage-v2/content/videos/hero.webm" type="video/webm"/>
                                             <source src="/_resources/homepage-v2/content/videos/hero.mp4" type="video/mp4"/>
                                             <link rel="transcript" title="English transcript" href="#hero-vid-transcript">
-                                            <img src="/_resources/homepage-v2/content/images/vid-still.jpg" alt="Texas Tech University Admin Building">
+                                            <img src="/assets/img/REC15406.jpg" alt="Texas Tech University Admin Building">
                                         </video>
 
                                         <div class="ttu-header-vid__overlay">
@@ -269,6 +270,7 @@
                                                     <h2 class="animated slide-in-top timing-fnc-1 delay-1s slow">
                                                         TEXAS <br/>TECH,
                                                     </h2>
+                                                    <p></p>
                                                     <h2 class="animated tracking-in-expand timing-fnc-1 delay-2s slow">
                                                         UNIVERSITY <br/>
                                                         RECREATION<sup>&trade;</sup>
@@ -329,28 +331,43 @@
                                 <!--end of headline section-->
                                 <section class="ttu__highlight">
                                     <div class="ttu-highlight__news ttu-vert-padding">
-                                        <div id="ttu-highlight-pics__trigger--reveal"></div>
-                                        <!--vertical scroll and horizontal scroll at the same time width="25" height="25"-->
-                                        <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                                            <g>
-                                                <g transform="rotate(-90 12.5 12.5)">
-                                                    <title>Triangle</title>
-                                                    <desc>A decorative red triangle element</desc>
-                                                    <!--<path fill="#e90802" d="M0 25l25-12.509L0 0v12.491z"/>-->
-                                                    <path class="triangle-icon__path" d="M0 25l25-12.509L0 0v12.491z"/>
-                                                </g>
+	                                <div id="ttu-highlight-pics__trigger--reveal"></div>
+	                                <!--vertical scroll and horizontal scroll at the same time width="25" height="25"-->
+	                                <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+		                            <g>
+			                                <g transform="rotate(-90 12.5 12.5)">
+				                            <title>Triangle</title>
+                                                <desc>A decorative red triangle element</desc>
+
+                                                <!--<path fill="#e90802" d="M0 25l25-12.509L0 0v12.491z"/>-->
+
+                                                <path class="triangle-icon__path" d="M0 25l25-12.509L0 0v12.491z"/>
+
                                             </g>
-                                        </svg>
-                                        <svg class="tri-left" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                            <g>
-                                                <g transform="rotate(-180 25 25)">
-                                                    <title>Triangle</title>
-                                                    <desc>A decorative red triangle element which shows the progress.</desc>
-                                                    <path class="tri-left__path" d="M0 50l50-25.018L0 0v24.982z"/>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                        <section class="ttu-sliders-highlights__news ttu-lim-width ttu-lim-width-half">
+
+                                    </g>
+
+                                    </svg>
+
+                                 <svg class="tri-left" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" >
+
+                                    <g>
+
+                                        <g transform="rotate(-180 25 25)">
+
+                                            <title>Triangle</title>
+
+                                            <desc>A decorative red triangle element which shows the progress.</desc>
+
+                                            <path class="tri-left__path" d="M0 50l50-25.018L0 0v24.982z"/>
+
+                                        </g>
+
+                                    </g>
+
+                                </svg>
+
+                                <section class="ttu-sliders-highlights__news ttu-lim-width ttu-lim-width-half">
                                             <div class="ttu-highlight-news__item">
                                                 <div class="ttu-hightlight-news-item__title">
                                                     <h2>Aquatics</h2>
@@ -415,6 +432,7 @@
                                                 </div>
                                             </div>
 
+                                            <div class="ttu-highlight-news__item">
                                             <div class="ttu-hightlight-news-item__title">
                                                     <h2>Outdoor Pursuits</h2>
                                                     <h1>Outdoor Pursuits Outdoor Pursuits Outdoor Pursuits</h1>
@@ -435,8 +453,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </section>
-                                    </div>
+
+                                    </section>
+
+                                </div>
                                     <!--
 Horizontal scrolling highlight section Available in desktop only
 
@@ -446,19 +466,27 @@ scroll to sync correctly.
 NOTE: If updating these also update the desktop version images
 in <div class="ttu-highlight__pics--desktop hidden" id="highlight-pics-container">
 -->
-                                    <div class="ttu-highlight__pics">
+
+                                <div class="ttu-highlight__pics">
+
                                         <div class="ttu-sliders-highlights__pics">
+
                                             <section class="ttu-highlight-pics__img">
-                                                <img src="/_resources/homepage-2021/content/images/highlight/enrollment-m.jpg" alt="Texas Tech&#039;s Growth"/>
+                                                <img src="/assets/img/REC15406.jpg" alt="Texas Tech&#039;s Growth"/>
                                             </section>
                                             <section class="ttu-highlight-pics__img">
-                                                <img src="/_resources/homepage-2021/content/images/highlight/svm-m.jpg" alt="School of Veterinary Medicine"/>
+                                                <img src="/assets/img/REC15406.jpg" alt="School of Veterinary Medicine"/>
                                             </section>
                                             <section class="ttu-highlight-pics__img">
-                                                <img src="/_resources/homepage-2021/content/images/highlight/highlight-3-m.jpg" alt="Online Programs Among Best"/>
+                                                <img src="/assets/img/REC15406.jpg" alt="Online Programs Among Best"/>
                                             </section>
+
+                                            <section class="ttu-highlight-pics__img">
+                                                <img src="/assets/img/REC15406.jpg" alt="Online Programs Among Best"/>
+                                            </section>
+
                                         </div>
-                                    </div>
+                                </div>
                                     <!--
 Horizontal scrolling highlight section Available in desktop only
 
@@ -468,15 +496,17 @@ scroll to sync correctly.
 NOTE: If updating these also update the mobile version images
 in <div class="ttu-highlight__pics">.
 -->
+
                                     <div class="ttu-highlight__pics--desktop hidden" id="highlight-pics-container">
                                         <section class="ttu-highlight-pics__imgs">
-                                            <img src="/_resources/homepage-2021/content/images/highlight/enrollment.jpg" alt="Texas Tech&#039;s Growth"/>
-                                            <img src="/_resources/homepage-2021/content/images/highlight/svm.jpg" alt="School of Veterinary Medicine"/>
-                                            <img src="/_resources/homepage-2021/content/images/highlight/highlight-3.jpg" alt="Online Programs Among Best"/>
+                                            <img src="/assets/img/REC15406.jpg" alt="Texas Tech&#039;s Growth"/>
+                                            <img src="/assets/img/REC15406.jpg" alt="School of Veterinary Medicine"/>
+                                            <img src="/assets/img/REC15406.jpg" alt="Online Programs Among Best"/>
                                         </section>
                                     </div>
                                 </section>
                                 <!-- end of highlight-->
+
                                 <section class="ttu__connect ttu-vert-padding">
                                     <div class="ttu__two-cols">
                                         <div class="ttu-two-cols__l">
@@ -649,7 +679,7 @@ in <div class="ttu-highlight__pics">.
                                     </section>
                                 </section>
                                 <!-- end of section ttu__insta -->
-                                <!--<section class="ttu__news ttu-vert-padding">
+                                <section class="ttu__news ttu-vert-padding">
                                     <div class="ttu-news__top ttu-lim-width">
                                         <div class="ttu-new-top__title">
                                             <h3>Texas Tech Today</h3>
@@ -711,9 +741,9 @@ in <div class="ttu-highlight__pics">.
                                         </a>
                                     </section>
                                 </section>
-                                -->
+
                                 <!-- end of section ttu__news -->
-                                <!--<section class="ttu__category ttu-vert-padding--bottom">
+                                <section class="ttu__category ttu-vert-padding--bottom">
                                     <div class="ttu-lim-width">
                                         <div class="ttu-category__top">
                                             <div class="ttu-category__title">
@@ -731,7 +761,6 @@ in <div class="ttu-highlight__pics">.
                                                 </svg>
                                                 <h2>VIEW BY CATEGORY</h2>
                                             </div>
-                                           -->
                                             <!--end of ttu-category__title-->
                                             <!--<p>Select a category below to view more stories or visit Texas Tech Today.</p>-->
                                             <div class="ttu-category__dropdown">
@@ -799,7 +828,7 @@ in <div class="ttu-highlight__pics">.
                                             <!--end of ttu-category__dropdown-->
                                         </div>
                                         <!--end of ttu-category__top-->
-                                        <!--<div class="ttu-category__stories">
+                                        <div class="ttu-category__stories">
                                             <a href="https://today.ttu.edu/posts/2021/09/Stories/honoring-the-13.php" target="_blank" title="Honoring the 13">
                                                 <article style="background-image: url('https://today.ttu.edu/posts/2021/09/Images/Honoring_the_13/Soldiers_standing_folded_flags.JPG');">
                                                     <div class="ttu-news-titles">
@@ -845,7 +874,7 @@ in <div class="ttu-highlight__pics">.
                                                     </div>
                                                 </article>
                                             </a>
-                                        </div>-->
+                                        </div>
                                         <!--end of category__stories-->
                                     </div>
                                     <!--End of the limited width container-->
@@ -1273,9 +1302,9 @@ in <div class="ttu-highlight__pics">.
         </main>
         <!-- Menu Overlay = = = = = = = = = = = = = = = = = = = = = -->
         <!-- TTU Search -->
-        <script src="/_ttu-template/2017/js/classie.js"></script>
-        <script src="/_ttu-template/2017/js/main.js"></script>
-        <script src="/_ttu-template/2017/js/stickykit.js"></script>
+<script src="/assets/js/classie.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/stickykit.js"></script>
         <script>
             $("#nav").stick_in_parent({
                 bottoming: false
@@ -1296,7 +1325,7 @@ in <div class="ttu-highlight__pics">.
                 });
             });
         </script>
-        <script xmlns:ouc="http://omniupdate.com/XSL/Variables" src="/_resources/homepage-v2/app.min.js"></script>
+        <script xmlns:ouc="http://omniupdate.com/XSL/Variables" src="/assets/js/app.min.js"></script>
         <script>
             $(function() {
                 $("nav.c-footer-university__links").removeClass("c-footer-university__links").addClass("ttu-footer__links");
