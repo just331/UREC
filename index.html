@@ -306,26 +306,72 @@
                                 <!--end of section ttu__header-->
                                 <section class="ttu__headline ttu-vert-padding">
                                     <section class="ttu-headline--default">
-                                        <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                                            <title>Triangle</title>
-                                            <desc>A decorative red triangle element</desc>
-                                            <g>
-                                                <g transform="rotate(-90 12.5 12.5)">
-                                                    <path class="triangle-icon__path" d="M0 25l25-12.509L0 0v12.491z"/>
+                                        <div class="ttu-two-cols ttu-lim-width--desktop">
+                                            <p>TEST</p>
+                                            <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                                                <title>Triangle</title>
+                                                <desc>A decorative red triangle element</desc>
+                                                <g>
+                                                    <g transform="rotate(-90 12.5 12.5)">
+                                                        <path class="triangle-icon__path" d="M0 25l25-12.509L0 0v12.491z"/>
+                                                    </g>
                                                 </g>
-                                            </g>
-                                        </svg>
+                                            </svg>
+                                            <style>
+                                                #calendar {
+                                                  max-width: 1000px;
+                                                    max-height: 600px;
+                                                  margin: 40px auto;
+                                                  background-color: grey;
+                                                }
+                                            </style>
+                                            <link href='fullcalendar/main.css' rel='stylesheet' />
+                                            <script src='fullcalendar/main.js'></script>
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                  var calendarEl = document.getElementById('calendar');
 
-                                    </section>
-                                    <section class="ttu-headline--prospective">
+                                                  var calendar = new FullCalendar.Calendar(calendarEl, {
+                                                    headerToolbar: {
+                                                      left: 'prev,next today',
+                                                      center: 'title',
+                                                      right: 'dayGridMonth,listDay,listWeek',
+                                                    },
 
-                                    </section>
-                                    <section class="ttu-headline--parent">
+                                                      views:{
+                                                        listDay: {buttonText: 'Today'},
+                                                        listWeek: {buttonText: 'Week'}
+                                                      },
+                                                    initialView: 'listDay',
+                                                    displayEventTime: true, // don't show the time column in list view
 
-                                    </section>
-                                    <section class="ttu-headline--visitor">
+                                                    // THIS KEY WON'T WORK IN PRODUCTION!!!
+                                                    // To make your own Google API key, follow the directions here:
+                                                    // http://fullcalendar.io/docs/google_calendar/
+                                                    googleCalendarApiKey: 'AIzaSyAJ8F-W3G8QdVUijSeBiSNTai9bKDEcSKc',
 
+                                                    // US Holidays
+                                                    events: 'a8n57484qtiggrf5p9tr2rnveg@group.calendar.google.com',
+                                                    className: 'gcalevent',
+                                                    eventClick: function(event) {
+                                                      window.open(event.url, 'gcalevent', 'width=400,height=600');
+                                                      return false;
+                                                    },
+                                                    eventRender: function(event, element, view) {
+                                                      if (view.name === "listDay"){
+                                                        element.find('_blank').append("<br/>"  + event.location, "&nbsp;" + "<br/>" + event.description);
+                                                      }
+                                                    },
+
+                                                  });
+
+                                                  calendar.render();
+                                                });
+                                            </script>
+                                            <div id="calendar"></div>
+                                        </div>
                                     </section>
+
                                 </section>
                                 <!--end of headline section-->
                                 <section class="ttu__highlight">
