@@ -299,7 +299,6 @@
                                 <!--end of section ttu__header-->
                                 <section class="ttu__headline ttu-vert-padding">
                                     <section class="ttu-headline--default">
-                                        <div class="ttu-two-cols ttu-lim-width--desktop">
                                             <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
                                                 <title>Triangle</title>
                                                 <desc>A decorative red triangle element</desc>
@@ -309,12 +308,100 @@
                                                     </g>
                                                 </g>
                                             </svg>
+                                            <script src="assets/js/slick.min.js"></script>
+                                            <script>
+                                                $().ready(function(){
+                                                  $('.slick-carousel').slick({
+                                                    arrows: true,
+                                                    rows: 2,
+                                                    slidesPerRow: 3,
+                                                    centerPadding: "0px",
+                                                    dots: false,
+                                                    slidesToShow: 4,
+                                                    touchThreshold: 500,
+                                                    infinite: false
+                                                  });
+                                                });
+                                            </script>
                                             <style>
+                                                 body {
+                                                  background: #333;
+                                                  font-family: sans-serif;
+                                                  margin: 0;
+                                                  padding: 0;
+                                                }
+                                                body .slick-slide .slide-content {
+                                                  margin: 0 10%;
+                                                  padding: 50px 100px;
+                                                  background: #CCC;
+                                                }
+                                                body .slick-list {
+                                                  margin: 20px 0px;
+                                                }
+                                                body .slick-prev,
+                                                body .slick-next {
+                                                  position: absolute;
+                                                  right: 10%;
+                                                  background: #777;
+                                                  border: none;
+                                                  color: transparent;
+                                                  width: 30px;
+                                                  height: 30px;
+                                                }
+                                                body .slick-prev:before,
+                                                body .slick-next:before {
+                                                  content: ">";
+                                                  color: #fff;
+                                                  font-size: 25px;
+                                                }
+                                                body .slick-prev {
+                                                  left: 10%;
+                                                }
+                                                body .slick-prev:before {
+                                                  content: "<";
+                                                }
+                                                body .slick-dots {
+                                                  list-style: none;
+                                                  margin: 0 auto;
+                                                  text-align: center;
+                                                }
+                                                body .slick-dots li {
+                                                  display: inline-block;
+                                                }
+                                                body .slick-dots li button {
+                                                  transition: 0.2s background-color ease-in-out 0s;
+                                                  border: none;
+                                                  padding: 0;
+                                                  color: transparent;
+                                                  width: 10px;
+                                                  height: 10px;
+                                                  background-color: #777;
+                                                  margin-right: 10px;
+                                                  border-radius: 50%;
+                                                }
+                                                body .slick-dots li.slick-active button {
+                                                  background-color: #fff;
+                                                }
+
+                                            </style>
+                                            <div class="slick-carousel">
+                                                  <div><div class="slide-content">REC CENTER</div></div>
+                                                  <div><div class="slide-content">AQ HRS</div></div>
+                                                  <div><div class="slide-content">F/W HRS</div></div>
+                                            </div>
+                                            <div class="slick-carousel">
+                                                  <div><div class="slide-content">OPC HRS</div></div>
+                                                  <div><div class="slide-content">CW HRS</div></div>
+                                                  <div><div class="slide-content">TURF HRS</div></div>
+                                            </div>
+
+
+<!--                                            <style>
                                                 #calendar {
                                                   max-width: 1000px;
                                                     max-height: 600px;
                                                   margin: 40px auto;
-                                                  background-color: grey;
+                                                  background-color: #CCC;
                                                 }
                                             </style>
                                             <link href='fullcalendar/main.css' rel='stylesheet' />
@@ -360,8 +447,7 @@
                                                   calendar.render();
                                                 });
                                             </script>
-                                            <div id="calendar"></div>
-                                        </div>
+                                            <div id="calendar"></div>-->
                                     </section>
 
                                 </section>
@@ -369,28 +455,6 @@
                                 <section class="ttu__highlight">
                                     <div class="ttu-highlight__news ttu-vert-padding">
                                         <div id="ttu-highlight-pics__trigger--reveal"></div>
-                                        <!--vertical scroll and horizontal scroll at the same time width="25" height="25"-->
-                                        <svg class="triangle-icon" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
-                                            <g>
-                                                <g transform="rotate(-90 12.5 12.5)">
-                                                    <title>Triangle</title>
-                                                    <desc>A decorative red triangle element</desc>
-                                                    <path class="triangle-icon__path" d="M0 25l25-12.509L0 0v12.491z"/>
-
-                                                </g>
-                                            </g>
-                                        </svg>
-
-                                        <svg class="tri-left" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" >
-                                            <g>
-                                                <g transform="rotate(-180 25 25)">
-                                                    <title>Triangle</title>
-                                                    <desc>A decorative red triangle element which shows the progress.</desc>
-                                                    <path class="tri-left__path" d="M0 50l50-25.018L0 0v24.982z"/>
-                                                </g>
-                                            </g>
-                                        </svg>
-
                                      <section class="ttu-sliders-highlights__news ttu-lim-width ttu-lim-width-half">
                                         <div class="ttu-highlight-news__item">
                                             <div class="ttu-hightlight-news-item__title">
@@ -511,7 +575,7 @@ scroll to sync correctly.
 NOTE: If updating these also update the desktop version images
 in <div class="ttu-highlight__pics--desktop hidden" id="highlight-pics-container">
 -->
-
+<!--
                                     <div class="ttu-highlight__pics">
 
                                         <div class="ttu-sliders-highlights__pics">
@@ -533,7 +597,7 @@ in <div class="ttu-highlight__pics--desktop hidden" id="highlight-pics-container
                                             </section>
 
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <!--
 Horizontal scrolling highlight section Available in desktop only
 
@@ -543,6 +607,7 @@ scroll to sync correctly.
 NOTE: If updating these also update the mobile version images
 in <div class="ttu-highlight__pics">.
 -->
+                                    <!--
 
                                     <div class="ttu-highlight__pics--desktop hidden" id="highlight-pics-container">
                                         <section class="ttu-highlight-pics__imgs">
@@ -552,7 +617,7 @@ in <div class="ttu-highlight__pics">.
                                             <img src="assets/img/UREC-SP-PIC.jpg" alt="SP"/>
                                             <img src="assets/img/UREC-OPC-PIC.jpg" alt="OPC"/>
                                         </section>
-                                    </div>
+                                    </div>-->
                                 </section>
                                 <!-- end of highlight-->
 
